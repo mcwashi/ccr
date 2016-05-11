@@ -1,33 +1,61 @@
 <?php
 
-	if($_POST['formSubmit'] == "Submit") 
+	if($_POST['formSubmit'] == "Submit")
 
     {
 
 		$errorMessage = "";
 
-		if(empty($_POST['firstName'])) 
+		if(empty($_POST['firstName']))
         {
 			$errorMessage .= "<li>You forgot to enter First Name!</li>";
 		}
-		if(empty($_POST['lastName'])) 
+		if(empty($_POST['lastName']))
         {
 			$errorMessage .= "<li>You forgot to enter a Last Name!</li>";
 		}
-		if(empty($_POST['middleName'])) 
+		if(empty($_POST['middleName']))
         {
 			$errorMessage .= "<li>You forgot to select your Middle Name!</li>";
 		}
-        
+
 		$varFirstName = $_POST['firstName'];
 		$varLastName = $_POST['lastName'];
 		$varMiddleName = $_POST['middleName'];
-		
-		$servername = "";
-		$username = "";
-		$password = "";
+		$varMaidenName = $_POST['maidenName'];
+	  $varAliasName = $_POST['aliasName'];
+	  $varBirthDate = $_POST['birthDate'];
+		$varSsn1 = $_POST['ssn1'];
+		$varSsn2 = $_POST['ssn2'];
+		$varSsn3 = $_POST['ssn3'];
+		$varHomeAddress = $_POST['homeAddress'];
+    $varHomeCity = $_POST['homeCity'];
+		$varHomeState = $_POST['homeState'];
+		$varMonthsAtResidence = $_POST['monthsAtResidence'];
+		$varYearsAtResidence = $_POST['yearsAtResidence'];
+		$varCurrentEmployer = $_POST['currentEmployer'];
+		$varPositionTitle = $_POST['positionTitle'];
+		$varMaritalStatus = $_POST['maritalStatus'];
+		$varSpouseFirstName = $_POST['spouseFirstName'];
+	  $varSpouseLastName = $_POST['spouseLastName'];
+		$varSpouseMiddleName = $_POST['spouseMiddleName'];
+	  $varSpouseMaidenName = $_POST['spouseMaidenName'];
+		$varSpouseAliasName = $_POST['spouseAliasName'];
+		$varSpouseBirthDate = $_POST['spouseBirthDate '];
+		$varSpouseSsn1 = $_POST['spouseSsn1'];
+		$varSpouseSsn2 = $_POST['spouseSsn2'];
+		$varSpouseSsn3 = $_POST['spouseSsn3'];
+		$varDeclaredBankruptcy = $_POST['declaredBankruptcy'];
+		$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
+		$varRepossession = $_POST['repossession'];
+		$varRepossessionYear = $_POST['repossessionYear'];
 
-		if(empty($errorMessage)) 
+
+		//$servername = "";
+		//$username = "";
+		//$password = "";
+
+		if(empty($errorMessage))
         {
 
 			//check on creating a ini file to store the username and password
@@ -69,19 +97,16 @@
 							PrepSQL($varSpouseSsn3) . ", " .
 							PrepSQL($varDeclaredBankruptcy) . ", " .
 							PrepSQL($varDeclaredBankruptcyYear) . ", " .
-							PrepSQL($varDeclaredBankruptcy) . ", " .
 							PrepSQL($varRepossession) . ", " .
-							PrepSQL($varRepossessionYear) . ", " .
-
-							PrepSQL($varMiddleName) . ")";
+							PrepSQL($varRepossessionYear) . ")";
 
 			mysql_query($sql);
 
-			
 
-			
 
-			
+
+
+
 
 			header("Location: thankyou.html");
 
@@ -91,7 +116,7 @@
 
 	}
 
-            
+
 
     // function: PrepSQL()
 
@@ -111,7 +136,7 @@
 
         // Stripslashes
 
-        if(get_magic_quotes_gpc()) 
+        if(get_magic_quotes_gpc())
 
         {
 
@@ -178,7 +203,7 @@
                 <div class="tabcontents">
                 <?php
 
-		    if(!empty($errorMessage)) 
+		    if(!empty($errorMessage))
 
 		    {
 
@@ -195,16 +220,16 @@
                 <table  id="bodyFont" border="0">
                 	<tr>
                     	<td  width="100"><label for="firstName">First Name</label></td>
-                        <td><input type="text" name="firstName" maxlength="50" value="<?=$varFirstName;?>"/></td> 
+                        <td><input type="text" name="firstName" maxlength="50" value="<?=$varFirstName;?>"/></td>
                         <td  width="100"><label for="lastName">Last Name</label></td>
-                        <td><input type="text" name="lastName" maxlength="50" value="<?=$varLastName;?>"/></td> 
+                        <td><input type="text" name="lastName" maxlength="50" value="<?=$varLastName;?>"/></td>
                         <td width="100"><label for="middleName">Middle Name</label></td>
-                        <td><input type="text" name="middleName" maxlength="50" value="<?=$varMiddleName;?>"/></td> 
-                          
+                        <td><input type="text" name="middleName" maxlength="50" value="<?=$varMiddleName;?>"/></td>
+
                     </tr>
                     <tr>
                     	<td><label>Maiden Name if Marrried:</label></td>
-                        <td><input type="text" name="maidenName"></td> 
+                        <td><input type="text" name="maidenName"></td>
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="aliasName"></td>
                         <td><label>Date of Birth:</label></td>
@@ -297,23 +322,23 @@
                      </tr>
                      <tr>
                      	<td colspan="6">If married, provide spouse information:</td>
-                     
-                     </tr>	
-                     
+
+                     </tr>
+
                      <tr>
                      	<td>
                         <label for="spouseFirstName">First Name</label></td>
-                        <td><input type="text" name="spouseFirstName"></td> 
+                        <td><input type="text" name="spouseFirstName"></td>
                         <td  width="100"><label for="spouseLastName">Last Name</label></td>
                         <td><input type="text" name="spouseLastName"></td>
                         <td width="100"><label for="spouseMiddleName">Middle Name</label></td>
-                        <td><input type="text" name="spouseMiddleName"></td> 
+                        <td><input type="text" name="spouseMiddleName"></td>
                         <br>
                        </td>
                      </tr>
                      <tr>
                     	<td><label>Maiden Name if married :</label></td>
-                        <td><input type="text" name="spouseMaidenName"></td> 
+                        <td><input type="text" name="spouseMaidenName"></td>
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="spouseAliasName"></td>
                         <td><label>Date of Birth:</label></td>
@@ -334,8 +359,8 @@
                         <label>If so, what year? </label>
                         <input type="text" name="yearBankruptcy" maxlength="4">
                         </td>
-                        
-                        
+
+
                         <td><label>Have you ever had a repossession?</label>
                         <input type="radio" name="repossession" value="1" > Yes
                         <input type="radio" name="repossession" value="0"> No
@@ -344,8 +369,8 @@
                         <label>If so, what year? </label>
                         <input type="text" name="yearRepossession" maxlength="4">
                         </td>
-                        
-                        
+
+
                         <td><label>Have you ever had a foreclosure?</label>
                         <input type="radio" name="foreclosure" value="1" > Yes
                         <input type="radio" name="foreclosure" value="0"> No
@@ -359,8 +384,8 @@
                     	<td colspan="3"><input type="submit" name="formSubmit" value="Submit" /></td>
                         <td colspan="3"><input type="cancel" value="Cancel"></td>
                         </tr>
-                     
-                     
+
+
                 </table>
                 </form>
                </div>
@@ -368,7 +393,7 @@
     <tr>
     	<td height="10px" bgcolor="F06D80"></td>
     </tr>
-    
+
 
 
 </table>
