@@ -23,13 +23,13 @@
 		$varLastName = $_POST['lastName'];
 		$varMiddleName = $_POST['middleName'];
 		$varMaidenName = $_POST['maidenName'];
-	  $varAliasName = $_POST['aliasName'];
-	  $varBirthDate = $_POST['birthDate'];
+	    $varAliasName = $_POST['aliasName'];
+	    $varBirthDate = $_POST['birthDate'];
 		$varSsn1 = $_POST['ssn1'];
 		$varSsn2 = $_POST['ssn2'];
 		$varSsn3 = $_POST['ssn3'];
 		$varHomeAddress = $_POST['homeAddress'];
-    $varHomeCity = $_POST['homeCity'];
+        $varHomeCity = $_POST['homeCity'];
 		$varHomeState = $_POST['homeState'];
 		$varMonthsAtResidence = $_POST['monthsAtResidence'];
 		$varYearsAtResidence = $_POST['yearsAtResidence'];
@@ -37,9 +37,9 @@
 		$varPositionTitle = $_POST['positionTitle'];
 		$varMaritalStatus = $_POST['maritalStatus'];
 		$varSpouseFirstName = $_POST['spouseFirstName'];
-	  $varSpouseLastName = $_POST['spouseLastName'];
+	    $varSpouseLastName = $_POST['spouseLastName'];
 		$varSpouseMiddleName = $_POST['spouseMiddleName'];
-	  $varSpouseMaidenName = $_POST['spouseMaidenName'];
+	    $varSpouseMaidenName = $_POST['spouseMaidenName'];
 		$varSpouseAliasName = $_POST['spouseAliasName'];
 		$varSpouseBirthDate = $_POST['spouseBirthDate '];
 		$varSpouseSsn1 = $_POST['spouseSsn1'];
@@ -68,8 +68,7 @@
 
 
 			$sql = "INSERT INTO Persons (FirstName, LastName, MiddleName) VALUES (".
-
-							PrepSQL($varFirstName) . ", " .
+						    PrepSQL($varFirstName) . ", " .
 							PrepSQL($varLastName) . ", " .
 							PrepSQL($varMiddleName) . ", " .
 							PrepSQL($varMaidenName) . ", " .
