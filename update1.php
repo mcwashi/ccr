@@ -76,75 +76,342 @@
 	//if (isset($_POST['submit']))
 	if($_POST['formSubmit'] == "Submit")
 	{
-		    $varFirstName = $_POST['firstName'];
-      		$varLastName = $_POST['lastName'];
-       		$varMiddleName = $_POST['middleName'];
-			$varMaidenName = $_POST['maidenName'];
-			$varAliasName = $_POST['aliasName'];
-			$varBirthDate = $_POST['birthDate'];
-			$varSsn1 = $_POST['ssn1'];
-			$varSsn1 = $_POST['ssn2'];
-			$varSsn1 = $_POST['ssn3'];
-			$varHomeAddress = $_POST['homeAddress'];
-			$varHomeCity = $_POST['homeCity'];
-			$varHomeState = $_POST['homeState'];
-			$varMonthsAtResidence = $_POST['monthsAtResidence'];
-			$varYearsAtResidence = $_POST['yearsAtResidence'];
-			$varCurrentEmployer = $_POST['currentEmployer'];
-			$varPositionTitle = $_POST['positionTitle'];
-			$varMaritalStatus = $_POST['maritalStatus'];
-			$varSpouseFirstName = $_POST['spouseFirstName'];
-			$varSpouseLastName = $_POST['spouseLastName'];
-			$varSpouseMiddleName = $_POST['spouseMiddleName'];
-			$varSpouseMaidenName = $_POST['spouseMaidenName'];
-			$varSpouseAliasName = $_POST['spouseAliasName'];
-			$varSpouseBirthDate = $_POST['spouseBirthDate'];
-			$varSpouseSsn1 = $_POST['spouseSsn1'];
-			$varSpouseSsn2 = $_POST['spouseSsn2'];
-			$varSpouseSsn3 = $_POST['spouseSsn3'];
-			$varDeclaredBankruptcy = $_POST['declaredBankruptcy'];
-			$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
-			$varRepossession = $_POST['repossession'];
-			$varRepossessionYear = $_POST['repossessionYear'];
-			$varForeclosure = $_POST['foreclosure'];
-			$varForeclosureYear = $_POST['foreclosureYear'];
-
+		
+		
+		//$ok = true;
+//		if (!isset($_POST['firstName']) || $_POST['firstName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varFirstName = $_POST['firstName'];
+//		}
+//		
+//		if (!isset($_POST['lastName']) || $_POST['lastName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varLastName = $_POST['lastName'];
+//		}
+//		
+	if (!isset($_POST['middleName']) || $_POST['middleName'] === '')
+		{
+			$ok = false;
+		}
+		else
+		{
+			$varMiddleName = $_POST['middleName'];
+		}
+//		
+//		
+//		if (!isset($_POST['maidenName']) || $_POST['maidenName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varMaidenName = $_POST['maidenName'];
+//		}
+//		
+//		if (!isset($_POST['aliasName']) || $_POST['aliasName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varAliasName = $_POST['aliasName'];
+//		}
+//		
+//		if (!isset($_POST['birthDate']) || $_POST['birthDate'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varBirthDate = $_POST['birthDate'];
+//		}
+//		
+//		if (!isset($_POST['ssn1']) || $_POST['ssn1'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSsn1 = $_POST['ssn1'];
+//		}
+//		
+//		if (!isset($_POST['ssn2']) || $_POST['ssn2'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSsn1 = $_POST['ssn2'];
+//		}
+//		
+//		if (!isset($_POST['ssn3']) || $_POST['ssn3'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSsn1 = $_POST['ssn3'];
+//		}
+//		
+//		if (!isset($_POST['homeAddress']) || $_POST['homeAddress'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varHomeAddress = $_POST['homeAddress'];
+//		}
+//		
+//		if (!isset($_POST['homeCity']) || $_POST['homeCity'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varHomeCity = $_POST['homeCity'];
+//		}
+//		
+//		if (!isset($_POST['homeState']) || $_POST['homeState'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varHomeState = $_POST['homeState'];
+//		}
+//		
+//		if (!isset($_POST['monthsAtResidence']) || $_POST['monthsAtResidence'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varMonthsAtResidence = $_POST['monthsAtResidence'];
+//		}
+//		
+//		if (!isset($_POST['yearsAtResidence']) || $_POST['yearsAtResidence'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varYearsAtResidence = $_POST['yearsAtResidence'];
+//		}
+//		
+//		if (!isset($_POST['currentEmployer']) || $_POST['currentEmployer'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varCurrentEmployer = $_POST['currentEmployer'];
+//		}
+//		
+//		if (!isset($_POST['positionTitle']) || $_POST['positionTitle'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varPositionTitle = $_POST['positionTitle'];
+//		}
+//		
+//		if (!isset($_POST['maritalStatus']) || $_POST['maritalStatus'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varMaritalStatus = $_POST['maritalStatus'];
+//		}
+//		
+//		if (!isset($_POST['spouseFirstName']) || $_POST['spouseFirstName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseFirstName = $_POST['spouseFirstName'];
+//		}
+//		
+//		if (!isset($_POST['spouseLastName']) || $_POST['spouseFirstName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseLastName = $_POST['spouseLastName'];
+//		}
+//		
+//		if (!isset($_POST['spouseMiddleName']) || $_POST['spouseMiddleName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseMiddleName = $_POST['spouseMiddleName'];
+//		}
+//		
+//		if (!isset($_POST['spouseMaidenName']) || $_POST['spouseMaidenName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseMaidenName = $_POST['spouseMaidenName'];
+//		}
+//		
+//		if (!isset($_POST['spouseAliasName']) || $_POST['spouseAliasName'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseAliasName = $_POST['spouseAliasName'];
+//		}
+//		
+//		if (!isset($_POST['spouseBirthDate']) || $_POST['spouseBirthDate'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseBirthDate = $_POST['spouseBirthDate'];
+//		}
+//		
+//		if (!isset($_POST['spouseSsn1']) || $_POST['spouseSsn1'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseSsn1 = $_POST['spouseSsn1'];
+//		}
+//		
+//		if (!isset($_POST['spouseSsn2']) || $_POST['spouseSsn2'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseSsn2 = $_POST['spouseSsn2'];
+//		}
+//		
+//		if (!isset($_POST['spouseSsn3']) || $_POST['spouseSsn3'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varSpouseSsn3 = $_POST['spouseSsn3'];
+//		}
+//		
+//		if (!isset($_POST['declaredBankruptcy']) || $_POST['declaredBankruptcy'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varDeclaredBankruptcy = $_POST['declaredBankruptcy'];
+//		}
+//		
+//		if (!isset($_POST['declaredBankruptcyYear']) || $_POST['declaredBankruptcyYear'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
+//		}
+//		
+//		if (!isset($_POST['repossession']) || $_POST['repossession'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varRepossession = $_POST['repossession'];
+//		}
+//		
+//		if (!isset($_POST['repossessionYear']) || $_POST['repossessionYear'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varRepossessionYear = $_POST['repossessionYear'];
+//		}
+//		
+//		if (!isset($_POST['foreclosure']) || $_POST['foreclosure'] === '')
+//		{
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varForeclosure = $_POST['foreclosure'];
+//		}
+//		
+//		if (!isset($_POST['foreclosureYear']) || $_POST['foreclosureYear'] === '')
+//		{
+//			echo "<p>you are here</p>";
+//			$ok = false;
+//		}
+//		else
+//		{
+//			$varForeclosureYear = $_POST['foreclosureYear'];
+//		}
+//		
+//		
+//		if ($ok)
+//		{
+			
 			
 			$db = mysqli_connect('localhost','','', 'CICR');
 			$sql = sprintf("Update Persons SET 
-			FirstName = '%s', 
-			LastName = '%s', 
-			MiddleName = '%s',
-		    MaidenName = '%s',
-		    AliasName = '%s',
-			BirthDate = '%s',
-			SSN1 = '%s',
-			SSN2 = '%s',
-			SSN3 = '%s',
-			HomeAddress = '%s',
-			HomeCity = '%s',
-			HomeState = '%s',
-			YearsAtResidence = '%s',
-			MonthsAtResidence = '%s',
-			CurrentEmployer = '%s',
-			PositionTitle = '%s',
-			MaritalStatus = '%s',
-			SpouseFirstName = '%s',
-			SpouseLastName = '%s',
-			SpouseMiddleName = '%s', 
-			SpouseMaidenName = '%s',
-			SpouseAliasName = '%s',
-			SpouseBirthDate = '%s',
-			SpouseSSN1 = '%s',
-			SpouseSSN2 = '%s',
-			SpouseSSN3 = '%s',
-			DeclaredBankRuptcy = '%s',
-			DeclaredBankRuptcyYear = '%s',
-			Repossession = '%s',
-			RepossessionYear = '%s',
-			Foreclosure = '%s',
-			ForeclosureYear = '%s'
-			WHERE PersonId='%s'", 
+			
+			
+			FirstName = %s, 
+			LastName = %s, 
+			MiddleName = %s,
+		    MaidenName = %s,
+		    AliasName = %s,
+			BirthDate = %s,
+			SSN1 = %s,
+			SSN2 = %s,
+			SSN3 = %s,
+			HomeAddress = %s,
+			HomeCity = %s,
+			HomeState = %s,
+			YearsAtResidence = %s,
+			MonthsAtResidence = %s,
+			CurrentEmployer = %s,
+			PositionTitle = %s,
+			MaritalStatus = %s,
+			SpouseFirstName = %s,
+			SpouseLastName = %s,
+			SpouseMiddleName = %s, 
+			SpouseMaidenName = %s,
+			SpouseAliasName = %s,
+			SpouseBirthDate = %s,
+			SpouseSSN1 = %s,
+			SpouseSSN2 = %s,
+			SpouseSSN3 = %s,
+			DeclaredBankRuptcy = %s,
+			DeclaredBankRuptcyYear = %s,
+			Repossession = %s,
+			RepossessionYear = %s,
+			Foreclosure = %s,
+			ForeclosureYear = %s
+			WHERE PersonId=%s", 
+			
 			mysqli_real_escape_string($db, $varFirstName),
 			mysqli_real_escape_string($db, $varLastName),
 			mysqli_real_escape_string($db, $varMiddleName),
@@ -184,7 +451,7 @@
 			echo '<p>User updated.</p>';
 			mysqli_close($db);
 			
-		
+		//}
 	}
 	else
 		{

@@ -35,11 +35,23 @@
     <tr>
     	<td valign="top" height="200px" bgcolor="#ffffff">
         
-        <P>MARCUS WAHSINGTON</P>
-        <ul>
+      <h2>Member List</h2>
+        <center>
+        <table border="1">
+        <tr bgcolor="#D5C8C8">
+        	<td>First Name</td>
+            <td>Last Name</td>
+            <td>Home Address</td>
+            <td>Home City</td>
+            <td>Home State</td>
+            <td>Update</td>
+            <td>Report</td>
+            
+        
+       
         <?php
-        $db = mysqli_connect('localhost','root','sucram#4963', 'CICR');
-		$sql = 'SELECT PersonId, FirstName, LastName FROM Persons';
+        $db = mysqli_connect('localhost','','', 'CICR');
+		$sql = 'SELECT PersonId, FirstName, LastName, HomeAddress, HomeCity, HomeState FROM Persons';
         $result = mysqli_query($db, $sql);
 		
 		if(!$db) die("Error connecting to MySQL database.");
@@ -47,21 +59,35 @@
 	   
         foreach($result as $row)
 		{
-			printf('<li>%s</li>',
-			  htmlspecialchars($row['FirstName'])
+		  
+			printf('<tr>
+			<td>%s</td>
+			<td>%s</td>
+			<td>%s</td>
+			<td>%s</td>
+			<td>%s</td>
+			<td><a href="update.php?id=%s">Update</a></td>
+			<td><a href="report.php?id=%s">Report</a></td>
+			</tr>',
+			  htmlspecialchars($row['FirstName']),
+			  htmlspecialchars($row['LastName']),
+			  htmlspecialchars($row['HomeAddress']),
+			  htmlspecialchars($row['HomeCity']),
+			  htmlspecialchars($row['HomeState']),
+			  htmlspecialchars($row['PersonId']),
+			  htmlspecialchars($row['PersonId'])
+			  
 			);
 		}
 		mysqli_close($db);
 		?>
-	   </ul> 
+	  
+       </table>
         
         </td>
     <tr>
     	<td height="10px" bgcolor="F06D80"></td>
     </tr>
-    
-
-
 </table>
 </center>
 

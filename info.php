@@ -59,7 +59,7 @@
         {
 
 			//check on creating a ini file to store the username and password
-			$db = mysql_connect("","","");
+			$db = mysql_connect("localhost","","");
 
 			if(!$db) die("Error connecting to MySQL database.");
 
@@ -67,7 +67,40 @@
 
 
 
-			$sql = "INSERT INTO Persons (FirstName, LastName, MiddleName) VALUES (".
+			$sql = "INSERT INTO Persons (
+			
+							firstName,
+							lastName,
+							MiddleName,
+			 				maidenName,
+							aliasName,
+							birthDate,
+							ssn1,
+							ssn2,
+							ssn3,
+							homeAddress,
+							homeCity,
+							homeState,
+							monthsAtResidence,
+							yearsAtResidence,
+							currentEmployer,
+							positionTitle,
+							maritalStatus,
+							spouseFirstName,
+							spouseLastName,
+							spouseMiddleName,
+							spouseMaidenName,
+							spouseAliasName,
+							spouseBirthDate,
+							spouseSsn1,
+							spouseSsn2,
+							spouseSsn3,
+							declaredBankruptcy,
+							declaredBankruptcyYear,
+							repossession,
+							repossessionYear 
+			
+			) VALUES (".
 						    PrepSQL($varFirstName) . ", " .
 							PrepSQL($varLastName) . ", " .
 							PrepSQL($varMiddleName) . ", " .
@@ -100,14 +133,7 @@
 							PrepSQL($varRepossessionYear) . ")";
 
 			mysql_query($sql);
-
-
-
-
-
-
-
-			header("Location: thankyou.html");
+     		header("Location: thankyou.html");
 
 			exit();
 
@@ -228,26 +254,26 @@
                     </tr>
                     <tr>
                     	<td><label>Maiden Name if Marrried:</label></td>
-                        <td><input type="text" name="maidenName"></td>
+                        <td><input type="text" name="maidenName" maxlength="50" value="<?=$varMiddleName;?>"/></td>
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="aliasName"></td>
                         <td><label>Date of Birth:</label></td>
-                        <td><input type="text" id="datepicker"></td>
+                        <td><input type="text" id="datepicker" name="birthDate" value="<?=$varBirthDate;?>"/></td>
                     </tr>
                     <tr>
                     	<td><label>SSN:</label></td>
-                        <td colspan="5"><input type="text" name="ssn-1" maxlength="3">-
-                        <input type="text" name="ssn-2" maxlength="2">-
-                        <input type="text" name="ssn-3" maxlength="4"></td>
+                        <td colspan="5"><input type="text" name="ssn1" maxlength="3" value="<?=$varSsn1;?>"/>-
+                        <input type="text" name="ssn2" maxlength="2" value="<?=$varSsn2;?>"/>-
+                        <input type="text" name="ssn3" maxlength="4" value="<?=$varSsn3;?>"/></td>
                      </tr>
                       <tr>
                     	<td><label>Home Address:</label></td>
-                        <td><input type="text" name="address"></td>
+                        <td><input type="text" name="homeAddress" value="<?=$varHomeAddress;?>"/></td>
                         <td><label>City</label></td>
-                        <td align="left"><input type="text" name="city"></td>
+                        <td align="left"><input type="text" name="homeCity" value="<?=$varHomeCity;?>"/></td>
                         <td><label>State</label></td>
                         <td>
-                        <select>
+                        <select name="homeState">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -304,19 +330,19 @@
                      </tr>
                      <tr>
                     	<td><label>Time at Residence:</label></td>
-                        <td colspan="5"><input type="text" name="yearsAtResidence">
-                         Years  <input type="text" name="monthsAtResidence"> Months</td>
+                        <td colspan="5"><input type="text" name="yearsAtResidence" value="<?=$varYearsAtResidence;?>"/>
+                         Years  <input type="text" name="monthsAtResidence" value="<?=$varMonthsAtResidence;?>"/> Months</td>
                      </tr>
                      <tr>
                     	<td><label>Current Employer:</label></td>
-                        <td><input type="text" name="currentEmployer"></td>
+                        <td><input type="text" name="currentEmployer" value="<?=$varCurrentEmployer;?>"/></td>
                         <td><label>Title of Position:</label></td>
-                        <td><input type="text" name="positionTitle"></td>
+                        <td><input type="text" name="positionTitle" value="<?=$varPositionTitle;?>"/></td>
                         <td><label>Marital Status:</label></td>
-                        <td><input type="radio" name="maritalStatus" value="Single"> Single<br>
-  							<input type="radio" name="maritalStatus" value="Married"> Married<br>
-  							<input type="radio" name="maritalStatus" value="Seperated"> Seperated<br>
-                            <input type="radio" name="maritalStatus" value="Divorced"> Divorced
+                        <td><input type="radio" name="maritalStatus" <?php if (isset($varMaritalStatus) && $varMaritalStatus=="Single") echo "checked";?> value="Single"> Single<br>
+                        <input type="radio" name="maritalStatus" <?php if (isset($varMaritalStatus) && $varMaritalStatus=="Married") echo "checked";?> value="Married">Married<br>
+                        <input type="radio" name="maritalStatus" <?php if (isset($varMaritalStatus) && $varMaritalStatus=="Seperated") echo "checked";?> value="Seperated">Seperated<br>
+                        <input type="radio" name="maritalStatus" <?php if (isset($varMaritalStatus) && $varMaritalStatus=="Divorced") echo "checked";?> value="Divorced">Divorced
                         </td>
                      </tr>
                      <tr>
@@ -327,56 +353,56 @@
                      <tr>
                      	<td>
                         <label for="spouseFirstName">First Name</label></td>
-                        <td><input type="text" name="spouseFirstName"></td>
+                        <td><input type="text" name="spouseFirstName" value="<?=$varSpouseFirstName;?>"/></td>
                         <td  width="100"><label for="spouseLastName">Last Name</label></td>
-                        <td><input type="text" name="spouseLastName"></td>
+                        <td><input type="text" name="spouseLastName" value="<?=$varSpouseLastName;?>"/></td>
                         <td width="100"><label for="spouseMiddleName">Middle Name</label></td>
-                        <td><input type="text" name="spouseMiddleName"></td>
+                        <td><input type="text" name="spouseMiddleName" value="<?=$varSpouseMiddleName;?>"/></td>
                         <br>
                        </td>
                      </tr>
                      <tr>
                     	<td><label>Maiden Name if married :</label></td>
-                        <td><input type="text" name="spouseMaidenName"></td>
+                        <td><input type="text" name="spouseMaidenName" value="<?=$varSpouseMaidenName;?>"/> </td>
                         <td><label> Alias or other name used:</label></td>
-                        <td><input type="text" name="spouseAliasName"></td>
+                        <td><input type="text" name="spouseAliasName" value="<?=$varSpouseAliasName;?>"/></td>
                         <td><label>Date of Birth:</label></td>
-                        <td><input type="text" id="datepicker" name="spouseBirthDay"></td>
+                        <td><input type="text" id="datepicker" name="spouseBirthDate" value="<?=$varSpouseBirthDate;?>"/></td>
                     </tr>
                     <tr>
                     	<td><label>Spouse SSN:</label></td>
-                        <td colspan="5"><input type="text" name="spouseSsn-1" maxlength="3">-
-                        <input type="text" name="spouseSsn-2" maxlength="2">-
-                        <input type="text" name="spouseSsn-3" maxlength="4"></td>
+                        <td colspan="5"><input type="text" name="spouseSsn1" maxlength="3" value="<?=$varSpouseSsn1;?>"/>-
+                        <input type="text" name="spouseSsn2" maxlength="2" value="<?=$varSpouseSsn2;?>"/>-
+                        <input type="text" name="spouseSsn3" maxlength="4" value="<?=$varSpouseSsn3;?>"/></td>
                      </tr>
                      <tr>
                      	<td><label>Have you ever declared Bankruptcy?</label>
-                        <input type="radio" name="bankruptcy" value="1" > Yes
-                        <input type="radio" name="bankruptcy" value="0"> No
+                        <input type="radio" name="declaredBankruptcy" <?php if (isset($varDeclaredBankruptcy) && $varDeclaredBankruptcy=="1") echo "checked";?> value="1" > Yes
+                        <input type="radio" name="declaredBankruptcy" <?php if (isset($varDeclaredBankruptcy) && $varDeclaredBankruptcy=="0") echo "checked";?> value="0"> No
                         </td>
                         <td>
                         <label>If so, what year? </label>
-                        <input type="text" name="yearBankruptcy" maxlength="4">
+                        <input type="text" name="declaredBankruptcyYear" maxlength="4" value="<?=$varDeclaredBankruptcyYear;?>"/>
                         </td>
 
 
                         <td><label>Have you ever had a repossession?</label>
-                        <input type="radio" name="repossession" value="1" > Yes
-                        <input type="radio" name="repossession" value="0"> No
+                        <input type="radio" name="repossession" <?php if (isset($varRepossession) && $varRepossession =="1") echo "checked";?> value="1" > Yes
+                        <input type="radio" name="repossession" <?php if (isset($varRepossession) && $varRepossession =="0") echo "checked";?> value="0"> No
                         </td>
                         <td>
                         <label>If so, what year? </label>
-                        <input type="text" name="yearRepossession" maxlength="4">
+                        <input type="text" name="repossessionYear" maxlength="4" value="<?=$varRepossessionYear;?>"/>
                         </td>
 
 
                         <td><label>Have you ever had a foreclosure?</label>
-                        <input type="radio" name="foreclosure" value="1" > Yes
-                        <input type="radio" name="foreclosure" value="0"> No
+                        <input type="radio" name="foreclosure" <?php if (isset($varForeclosure) && $varForeclosure =="1") echo "checked";?> value="1" > Yes
+                        <input type="radio" name="foreclosure" <?php if (isset($varForeclosure) && $varForeclosure =="0") echo "checked";?> value="0"> No
                         </td>
                         <td>
                         <label>If so, what year? </label>
-                        <input type="text" name="yearForeclosure" maxlength="4">
+                        <input type="text" name="foreclosureYear" maxlength="4" value="<?=$varForeclosureYear;?>"/>
                         </td>
                       </tr>
                       <tr>
