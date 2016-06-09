@@ -1,3 +1,23 @@
+<?php
+  
+  include 'include.php';
+  require 'dbInfo.php'
+?>
+
+<?php
+	if(isset ($_SESSION['formWasPosted']))
+	{
+		$postedData = $_SESSION['formWasPosted'];
+		$ID = trim($postedData['user']); 
+		//unset($_SESSION['formWasPosted']);
+	}
+	else
+	{
+		header('Location: index.php'); 
+	}
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -29,6 +49,8 @@
   <li><a href="info.php">Capture Information</a></li>
   <li><a class="active" href="list.php">Member List</a></li>
   <li><a href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
+
 </ul>
 </td>
     </tr>
@@ -50,7 +72,7 @@
         
        
         <?php
-        $db = mysqli_connect('localhost','','', 'CICR');
+        $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 		$sql = 'SELECT PersonId, FirstName, LastName, HomeAddress, HomeCity, HomeState FROM Persons';
         $result = mysqli_query($db, $sql);
 		

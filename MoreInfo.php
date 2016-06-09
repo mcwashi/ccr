@@ -20,6 +20,7 @@
   <li><a href="info.php">Capture Information</a></li>
   <li><a href="list.php">Member List</a></li>
   <li><a class="active" href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
 </ul>
 </td>
     </tr>

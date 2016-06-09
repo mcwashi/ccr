@@ -1,4 +1,24 @@
 <?php
+  
+  include 'include.php';
+  require 'dbInfo.php'
+?>
+
+<?php
+	if(isset ($_SESSION['formWasPosted']))
+	{
+		$postedData = $_SESSION['formWasPosted'];
+		$ID = trim($postedData['user']); 
+		//unset($_SESSION['formWasPosted']);
+	}
+	else
+	{
+		header('Location: index.php'); 
+	}
+
+?>
+
+<?php
 	if(isset($_GET['id']) && ctype_digit($_GET['id']))
     {
     	$id = $_GET['id'];
@@ -31,6 +51,7 @@
   <li><a href="info.php">Capture Information</a></li>
   <li><a class="active" href="list.php">Member List</a></li>
   <li><a href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
 </ul>
 </td>
     </tr>
@@ -45,6 +66,9 @@
 	$varMaidenName = '';
 	$varAliasName = '';
 	$varBirthDate = '';
+	$varEmail = '';
+	$varCellPhone = '';
+	$varWorkPhone = '';
 	$varSsn1 = '';
 	$varSsn2 = '';
 	$varSsn3 = '';
@@ -82,6 +106,9 @@
 			$varMaidenName = $_POST['maidenName'];
 			$varAliasName = $_POST['aliasName'];
 			$varBirthDate = $_POST['birthDate'];
+			$varEmail = $_POST['email'];
+		    $varCellPhone = $_POST['cellPhone'];
+		    $varWorkPhone = $_POST['workPhone'];
 			$varSsn1 = $_POST['ssn1'];
 			$varSsn1 = $_POST['ssn2'];
 			$varSsn1 = $_POST['ssn3'];
@@ -110,7 +137,7 @@
 			$varForeclosureYear = $_POST['foreclosureYear'];
 
 			
-			$db = mysqli_connect('localhost','','', 'CICR');
+			$db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 			$sql = sprintf("Update Persons SET 
 			FirstName = '%s', 
 			LastName = '%s', 
@@ -118,6 +145,9 @@
 		    MaidenName = '%s',
 		    AliasName = '%s',
 			BirthDate = '%s',
+			Email = '%s',
+			CellPhone = '%s',
+			WorkPhone = '%s',
 			SSN1 = '%s',
 			SSN2 = '%s',
 			SSN3 = '%s',
@@ -151,6 +181,9 @@
 			mysqli_real_escape_string($db, $varMaidenName),
 			mysqli_real_escape_string($db, $varAliasName ),
 			mysqli_real_escape_string($db, $varBirthDate ),
+			mysqli_real_escape_string($db, $varEmail),
+			mysqli_real_escape_string($db, $varCellPhone),
+			mysqli_real_escape_string($db, $varHomePhone),
 			mysqli_real_escape_string($db, $varSsn1),
 			mysqli_real_escape_string($db, $varSsn2),
 			mysqli_real_escape_string($db, $varSsn3),
@@ -179,7 +212,7 @@
 			mysqli_real_escape_string($db, $varForeclosureYear),
 			$id
 			);
-			echo $varMiddleName;
+			//echo $varMiddleName;
 			mysqli_query($db, $sql);
 			echo '<p>User updated.</p>';
 			mysqli_close($db);
@@ -189,7 +222,7 @@
 	else
 		{
 			//echo "you makde it here";
-			$db = mysqli_connect('localhost','','', 'CICR');
+			$db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 			$sql = sprintf('SELECT * FROM Persons WHERE PersonId=%s', $id);
 			$results = mysqli_query($db, $sql);
 			
@@ -201,6 +234,9 @@
 				$varMaidenName = $row['MaidenName'];
 				$varAliasName = $row['AliasName'];
 				$varBirthDate = $row['BirthDate'];
+				$varEmail = $row['Email'];
+				$varCellPhone = $row['CellPhone'];
+				$varWorkPhone = $row['WorkPhone'];
 				$varSsn1 = $row['SSN1'];
 				$varSsn2 = $row['SSN2'];
 				$varSsn3 = $row['SSN3'];
@@ -246,6 +282,21 @@
                         <td width="100"><label for="middleName">Middle Name</label></td>
                         <td><input type="text" name="middleName" maxlength="50" value="<?php 
 						echo htmlspecialchars($varMiddleName);
+						?>"/></td>
+
+                    </tr>
+                    <tr>
+                    	<td  width="100"><label for="email">Email</label></td>
+                        <td><input type="text" name="email" maxlength="30" value="<?php 
+						echo htmlspecialchars($varEmail);
+						?>"/></td>
+                        <td  width="100"><label for="cellPhone">Cell Phone</label></td>
+                        <td><input type="text" name="cellPhone" maxlength="10" value="<?php 
+						echo htmlspecialchars($varCellPhone);
+						?>"/></td>
+                        <td width="100"><label for="workPhone">Work Phone</label></td>
+                        <td><input type="text" name="workPhone" maxlength="10" value="<?php 
+						echo htmlspecialchars($varWorkPhone);
 						?>"/></td>
 
                     </tr>

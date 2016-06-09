@@ -1,11 +1,27 @@
 <?php
+  
+  include 'include.php';
+  require 'dbInfo.php'
+?>
 
+<?php
+	if(isset ($_SESSION['formWasPosted']))
+	{
+		$postedData = $_SESSION['formWasPosted'];
+		$ID = trim($postedData['user']); 
+		//unset($_SESSION['formWasPosted']);
+	}
+	else
+	{
+		header('Location: index.php'); 
+	}
+
+?>
+
+<?php
 	if($_POST['formSubmit'] == "Submit")
-
     {
-
 		$errorMessage = "";
-
 		if(empty($_POST['firstName']))
         {
 			$errorMessage .= "<li>You forgot to enter First Name!</li>";
@@ -18,13 +34,15 @@
         {
 			$errorMessage .= "<li>You forgot to select your Middle Name!</li>";
 		}
-
 		$varFirstName = $_POST['firstName'];
 		$varLastName = $_POST['lastName'];
 		$varMiddleName = $_POST['middleName'];
 		$varMaidenName = $_POST['maidenName'];
 	    $varAliasName = $_POST['aliasName'];
 	    $varBirthDate = $_POST['birthDate'];
+		$varEmail = $_POST['email'];
+		$varCellPhone = $_POST['cellPhone'];
+		$varWorkPhone = $_POST['workPhone'];
 		$varSsn1 = $_POST['ssn1'];
 		$varSsn2 = $_POST['ssn2'];
 		$varSsn3 = $_POST['ssn3'];
@@ -49,24 +67,16 @@
 		$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
 		$varRepossession = $_POST['repossession'];
 		$varRepossessionYear = $_POST['repossessionYear'];
-
-
 		//$servername = "";
 		//$username = "";
 		//$password = "";
-
 		if(empty($errorMessage))
         {
-
 			//check on creating a ini file to store the username and password
-			$db = mysql_connect("localhost","","");
-
-			if(!$db) die("Error connecting to MySQL database.");
-
-			mysql_select_db("CICR" ,$db);
-
-
-
+			//$db = mysql_connect("localhost","root","sucram#4963");
+			//if(!$db) die("Error connecting to MySQL database.");
+			//mysql_select_db("CICR" ,$db);
+			mysql_select_db(DB_NAME, $db);
 			$sql = "INSERT INTO Persons (
 			
 							firstName,
@@ -75,6 +85,9 @@
 			 				maidenName,
 							aliasName,
 							birthDate,
+							email,
+							cellPhone,
+							workPhone,
 							ssn1,
 							ssn2,
 							ssn3,
@@ -107,6 +120,9 @@
 							PrepSQL($varMaidenName) . ", " .
 							PrepSQL($varAliasName) . ", " .
 							PrepSQL($varBirthDate) . ", " .
+							PrepSQL($varEmail) . ", " .
+							PrepSQL($varCellPhone) . ", " .
+							PrepSQL($varWorkPhone) . ", " .
 							PrepSQL($varSsn1) . ", " .
 							PrepSQL($varSsn2) . ", " .
 							PrepSQL($varSsn3) . ", " .
@@ -131,56 +147,28 @@
 							PrepSQL($varDeclaredBankruptcyYear) . ", " .
 							PrepSQL($varRepossession) . ", " .
 							PrepSQL($varRepossessionYear) . ")";
-
 			mysql_query($sql);
      		header("Location: thankyou.html");
-
 			exit();
-
 		}
-
 	}
-
-
-
     // function: PrepSQL()
-
     // use stripslashes and mysql_real_escape_string PHP functions
-
     // to sanitize a string for use in an SQL query
-
     //
-
     // also puts single quotes around the string
-
     //
-
     function PrepSQL($value)
-
     {
-
         // Stripslashes
-
         if(get_magic_quotes_gpc())
-
         {
-
             $value = stripslashes($value);
-
         }
-
-
-
         // Quote
-
         $value = "'" . mysql_real_escape_string($value) . "'";
-
-
-
         return($value);
-
     }
-
 ?>
 
 
@@ -220,6 +208,7 @@
   <li><a class="active" href="info.php">Capture Information</a></li>
   <li><a href="list.php">Member List</a></li>
   <li><a href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
 </ul>
 </td>
     </tr>
@@ -227,17 +216,11 @@
     	<td valign="top" height="200px" bgcolor="#ffffff" >
                 <div class="tabcontents">
                 <?php
-
 		    if(!empty($errorMessage))
-
 		    {
-
 			    echo("<p>There was an error with your form:</p>\n");
-
 			    echo("<ul>" . $errorMessage . "</ul>\n");
-
             }
-
         ?>
 
 
@@ -253,12 +236,23 @@
 
                     </tr>
                     <tr>
+                    <td  width="100"><label for="email">Email</label></td>
+                      <td><input type="text" name="email" maxlength="30" value="<?=$varEmail;?>"/></td>
+                      <td  width="100"><label for="cellPhone">Cell Phone</label></td>
+                      <td><input type="text" name="cellPhone" maxlength="10" value="<?=$varCellPhone;?>"/></td>
+                      <td  width="100"><label for="workPhone">Work Phone</label></td>
+                      <td><input type="text" name="workPhone" maxlength="10" value="<?=$varWorkPhone;?>"/></td>
+                  </tr>
+                  
+                    <tr>
                     	<td><label>Maiden Name if Marrried:</label></td>
-                        <td><input type="text" name="maidenName" maxlength="50" value="<?=$varMiddleName;?>"/></td>
+                        <td><input type="text" name="maidenName" maxlength="50" value="<?=$varMaidenName;?>"/></td>
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="aliasName"></td>
                         <td><label>Date of Birth:</label></td>
-                        <td><input type="text" id="datepicker" name="birthDate" value="<?=$varBirthDate;?>"/></td>
+                        <td><input type="text"  name="birthDate" value="<?=$varBirthDate;?>"/>
+                        (YYYY-MM-DD)
+                        </td>
                     </tr>
                     <tr>
                     	<td><label>SSN:</label></td>
@@ -367,7 +361,7 @@
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="spouseAliasName" value="<?=$varSpouseAliasName;?>"/></td>
                         <td><label>Date of Birth:</label></td>
-                        <td><input type="text" id="datepicker" name="spouseBirthDate" value="<?=$varSpouseBirthDate;?>"/></td>
+                        <td><input type="text" name="spouseBirthDate" value="<?=$varSpouseBirthDate;?>"/> (YYYY-MM-DD)</td>
                     </tr>
                     <tr>
                     	<td><label>Spouse SSN:</label></td>

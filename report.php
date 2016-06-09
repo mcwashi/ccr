@@ -1,4 +1,25 @@
 <?php
+  
+  include 'include.php';
+  require 'dbInfo.php'
+?>
+
+
+<?php
+	if(isset ($_SESSION['formWasPosted']))
+	{
+		$postedData = $_SESSION['formWasPosted'];
+		$ID = trim($postedData['user']); 
+		//unset($_SESSION['formWasPosted']);
+	}
+	else
+	{
+		header('Location: index.php'); 
+	}
+
+?>
+
+<?php
 	if(isset($_GET['id']))
     {
     	$id = $_GET['id'];
@@ -31,6 +52,7 @@
   <li><a href="info.php">Capture Information</a></li>
   <li><a class="active" href="list.php">Member List</a></li>
   <li><a href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
 </ul>
 </td>
     </tr>
@@ -41,7 +63,7 @@
         <table border="1">
        
         <?php
-        $db = mysqli_connect('localhost','','', 'CICR');
+        $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 		$sql = sprintf('SELECT * FROM Persons WHERE PersonId=%s', $id);
         $result = mysqli_query($db, $sql);
 		

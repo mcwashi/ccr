@@ -1,12 +1,23 @@
 <?php
-   ob_start();
-   session_start();
+
+  include 'include.php';
+  
+  
+  if(count($_POST) > 0)
+  {
+	  
+	  if($_POST['user'] != "")
+	  {
+		  $_SESSION['formWasPosted'] = $_POST;
+		  header('Location: validate.php');
+	  }
+	  else
+	  {
+		//$userNameError = "validation";  
+	  }
+  }
 ?>
 
-<?
-   // error_reporting(E_ALL);
-   // ini_set("display_errors", 1);
-?>
 
 <!doctype html>
 <html>
@@ -16,27 +27,8 @@
 <link href="css/styleSheet.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-<!--
-<center>
-<table width="1000">
-	<tr>
-    	<td valign="bottom"><img src="images/Header.jpg" width="1000" height="200" alt=""/></td>
-    </tr>
-    <tr>
-    	<td valign="top" height="200px" bgcolor="#ffffff" >
-        	<img src="images/logInTitleBar.jpg" width="800" height="75" alt=""/>
-        </td>
-    </tr>
-    <tr>
-    	<td height="10px" bgcolor="F06D80"></td>
-    </tr>
-    
 
 
-</table>
-</center>
--->
 
 <body>
   <center>
@@ -52,7 +44,7 @@
                     <div class="login">
                       <h1>Login to Web App</h1>
                       <form class = "form-signin" role = "form" 
-            action="home.php" method="post">
+            action="index.php" method="POST">
                         <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
                         <p><input type = "text" class = "form-control" 
                name = "user" placeholder = "username" 

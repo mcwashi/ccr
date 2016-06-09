@@ -1,40 +1,64 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'CICR');
-define('DB_USER','');
-define('DB_PASSWORD','');
+  
+  include 'include.php';
+  require 'dbInfo.php'
+?>
 
-$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); 
-$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
-
-$ID = trim($_POST['user']); 
-$Password = trim($_POST['pass']);
-
-
-
-function SignIn()
-{
-	session_start();
-	
-	if(!empty($_POST['user']))
+<?php
+	if(isset ($_SESSION['formWasPosted']))
 	{
-		$query = mysql_query("SELECT * FROM Users where userName = '$_POST[user]' AND pass = '$_POST[pass]'"); 
-		$row = mysql_fetch_array($query); 
-		if(!empty($row['userName']) AND !empty($row['pass'])) 
-		{ 
-			$_SESSION['userName'] = $row['pass']; 
-			echo "SUCCESSFULLY LOGIN TO USER PROFILE PAGE..."; 
-		} 
-		else 
-		{ 
-			echo "SORRY... YOU ENTERD WRONG ID AND PASSWORD... PLEASE RETRY..."; 
-		}
- 	}	
-}
-
-if(isset($_POST['submit']))
-{
-	SignIn();
-}
+		$postedData = $_SESSION['formWasPosted'];
+		$ID = trim($postedData['user']); 
+		//unset($_SESSION['formWasPosted']);
+	}
+	else
+	{
+		header('Location: index.php'); 
+	}
 
 ?>
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Application Home</title>
+<link href="css/styleSheet.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<center>
+<table width="1000">
+	<tr>
+    	<td valign="bottom"><img src="images/Header.jpg" width="1000" height="200" alt=""/></td>
+    </tr>
+    <tr>
+    <td>
+    	<ul>
+  <li><a class="active" href="home.php">Home</a></li>
+  <li><a href="info.php">Capture Information</a></li>
+  <li><a href="list.php">Member List</a></li>
+  <li><a href="MoreInfo.php">More Information</a></li>
+  <li><a href="logout.php" >Logout</a></li>
+
+</ul>
+</td>
+    </tr>
+    <tr>
+    	<td valign="top" height="200px" bgcolor="#ffffff">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+        </td>
+    <tr>
+    	<td height="10px" bgcolor="F06D80"></td>
+    </tr>
+    
+
+
+</table>
+</center>
+
+
+</body>
+</html>
