@@ -337,61 +337,62 @@
 						?>"/></td>
                         <td><label>State</label></td>
                         <td>
-                        <select>
-                            <option value="<?php 
-						    echo htmlspecialchars($varHomeState);
-						    ?>" selected/>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
+                       <select name="homeState">
+                       		<option <?php if ($varHomeState == "" ) echo 'selected' ; ?> value=""></option>
+                            
+                            <option <?php if ($varHomeState == "AL" ) echo 'selected' ; ?> value="AL">Alabama</option>
+                            <option <?php if ($varHomeState == "AK" ) echo 'selected' ; ?> value="AK">Alaska</option>
+                            <option <?php if ($varHomeState == "AZ" ) echo 'selected' ; ?> value="AZ">Arizona</option>
+                            <option <?php if ($varHomeState == "AR" ) echo 'selected' ; ?> value="AR">Arkansas</option>
+                            <option <?php if ($varHomeState == "CA" ) echo 'selected' ; ?> value="CA">California</option>
+                            <option <?php if ($varHomeState == "IL" ) echo 'selected' ; ?> value="IL">Colorado</option>
+                            <option <?php if ($varHomeState == "CT" ) echo 'selected' ; ?> value="CT">Connecticut</option>
+                            <option <?php if ($varHomeState == "DE" ) echo 'selected' ; ?> value="DE">Delaware</option>
+                            <option <?php if ($varHomeState == "DC" ) echo 'selected' ; ?> value="DC">District Of Columbia</option>
+                            <option <?php if ($varHomeState == "FL" ) echo 'selected' ; ?> value="FL">Florida</option>
+                            <option <?php if ($varHomeState == "GA" ) echo 'selected' ; ?> value="GA">Georgia</option>
+                            <option <?php if ($varHomeState == "HI" ) echo 'selected' ; ?> value="HI">Hawaii</option>
+                            <option <?php if ($varHomeState == "ID" ) echo 'selected' ; ?> value="ID">Idaho</option>
+                            <option <?php if ($varHomeState == "IL" ) echo 'selected' ; ?> value="IL">Illinois</option>
+                            
+                            
+                            <option <?php if ($varHomeState == "IN" ) echo 'selected' ; ?> value="IN">Indiana</option>
+                            <option <?php if ($varHomeState == "IA" ) echo 'selected' ; ?> value="IA">Iowa</option>
+                            <option <?php if ($varHomeState == "KS" ) echo 'selected' ; ?> value="KS">Kansas</option>
+                            <option <?php if ($varHomeState == "KY" ) echo 'selected' ; ?> value="KY">Kentucky</option>
+                            <option <?php if ($varHomeState == "LA" ) echo 'selected' ; ?> value="LA">Louisiana</option>
+                            <option <?php if ($varHomeState == "ME" ) echo 'selected' ; ?> value="ME">Maine</option>
+                            <option <?php if ($varHomeState == "MD" ) echo 'selected' ; ?> value="MD">Maryland</option>
+                            <option <?php if ($varHomeState == "MA" ) echo 'selected' ; ?> value="MA">Massachusetts</option>
+                            <option <?php if ($varHomeState == "MI" ) echo 'selected' ; ?> value="MI">Michigan</option>
+                            <option <?php if ($varHomeState == "MN" ) echo 'selected' ; ?> value="MN">Minnesota</option>
+                            <option <?php if ($varHomeState == "MS" ) echo 'selected' ; ?> value="MS">Mississippi</option>
+                            <option <?php if ($varHomeState == "MO" ) echo 'selected' ; ?> value="MO">Missouri</option>
+                            <option <?php if ($varHomeState == "MT" ) echo 'selected' ; ?> value="MT">Montana</option>
+                            <option <?php if ($varHomeState == "NE" ) echo 'selected' ; ?> value="NE">Nebraska</option>
+                            <option <?php if ($varHomeState == "NV" ) echo 'selected' ; ?> value="NV">Nevada</option>
+                            <option <?php if ($varHomeState == "NH" ) echo 'selected' ; ?> value="NH">New Hampshire</option>
+                            <option <?php if ($varHomeState == "NJ" ) echo 'selected' ; ?> value="NJ">New Jersey</option>
+                            <option <?php if ($varHomeState == "NM" ) echo 'selected' ; ?> value="NM">New Mexico</option>
+                            <option <?php if ($varHomeState == "NY" ) echo 'selected' ; ?> value="NY">New York</option>
+                            <option <?php if ($varHomeState == "NC" ) echo 'selected' ; ?> value="NC">North Carolina</option>
+                            <option <?php if ($varHomeState == "ND" ) echo 'selected' ; ?> value="ND">North Dakota</option>
+                            <option <?php if ($varHomeState == "OH" ) echo 'selected' ; ?> value="OH">Ohio</option>
+                            <option <?php if ($varHomeState == "OK" ) echo 'selected' ; ?> value="OK">Oklahoma</option>
+                            <option <?php if ($varHomeState == "OR" ) echo 'selected' ; ?> value="OR">Oregon</option>
+                            <option <?php if ($varHomeState == "PA" ) echo 'selected' ; ?> value="PA">Pennsylvania</option>
+                            <option <?php if ($varHomeState == "RI" ) echo 'selected' ; ?> value="RI">Rhode Island</option>
+                            <option <?php if ($varHomeState == "SC" ) echo 'selected' ; ?> value="SC">South Carolina</option>
+                            <option <?php if ($varHomeState == "SD" ) echo 'selected' ; ?> value="SD">South Dakota</option>
+                            <option <?php if ($varHomeState == "TN" ) echo 'selected' ; ?> value="TN">Tennessee</option>
+                            <option <?php if ($varHomeState == "TX" ) echo 'selected' ; ?> value="TX">Texas</option>
+                            <option <?php if ($varHomeState == "UT" ) echo 'selected' ; ?> value="UT">Utah</option>
+                            <option <?php if ($varHomeState == "VT" ) echo 'selected' ; ?> value="VT">Vermont</option>
+                            <option <?php if ($varHomeState == "VA" ) echo 'selected' ; ?> value="VA">Virginia</option>
+                            <option <?php if ($varHomeState == "WA" ) echo 'selected' ; ?> value="WA">Washington</option>
+                            <option <?php if ($varHomeState == "WV" ) echo 'selected' ; ?> value="WV">West Virginia</option>
+                            <option <?php if ($varHomeState == "WI" ) echo 'selected' ; ?> value="WI">Wisconsin</option>
+                            <option <?php if ($varHomeState == "WY" ) echo 'selected' ; ?> value="WY">Wyoming</option>
                         </select>
                         </td>
                      </tr>

@@ -15,7 +15,7 @@
 	{
 		header('Location: index.php'); 
 	}
-
+	
 ?>
 
 <?php
@@ -268,6 +268,7 @@
                         <td><label>State</label></td>
                         <td>
                         <select name="homeState">
+                            <option value=""></option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>

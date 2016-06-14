@@ -73,7 +73,7 @@
        
         <?php
         $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-		$sql = 'SELECT PersonId, FirstName, LastName, HomeAddress, HomeCity, HomeState FROM Persons';
+		$sql = 'SELECT PersonId, FirstName, LastName, HomeAddress, HomeCity, HomeState FROM Persons order by LastName ASC';
         $result = mysqli_query($db, $sql);
 		
 		if(!$db) die("Error connecting to MySQL database.");
