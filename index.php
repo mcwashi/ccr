@@ -49,7 +49,7 @@
                         <p><input type = "text" class = "form-control" 
                name = "user" placeholder = "username" 
                required autofocus></p>
-                        <p><input type = "pass" class = "form-control"
+                        <p><input type = "password" class = "form-control"
                name="pass" placeholder = "password" required></p>
                         <p class="remember_me">
                           <label>

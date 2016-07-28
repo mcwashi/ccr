@@ -67,6 +67,13 @@
 		$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
 		$varRepossession = $_POST['repossession'];
 		$varRepossessionYear = $_POST['repossessionYear'];
+		//$varPreviousHomeAddress = $_POST['previousHomeAddress'];
+		//$varPreviousHomeCity = $_POST['previousHomeCity'];
+		//$varPreviousHomeState = $_POST['previousHomeState'];
+		//$varEmail2 = $_POST['email2'];
+		//$varMortgagePayment = $_POST['mortgagePayment'];
+		//$varBirthCity = $_POST['birthCity'];
+		//$varPassword = $_POST['password'];
 		//$servername = "";
 		//$username = "";
 		//$password = "";
@@ -111,7 +118,14 @@
 							declaredBankruptcy,
 							declaredBankruptcyYear,
 							repossession,
-							repossessionYear 
+							repossessionYear,
+							previousHomeAddress,
+							previousHomeCity,
+							previousHomeState,
+							email2,
+							mortgagePayment,
+							birthCity,
+							password
 			
 			) VALUES (".
 						    PrepSQL($varFirstName) . ", " .
@@ -146,9 +160,26 @@
 							PrepSQL($varDeclaredBankruptcy) . ", " .
 							PrepSQL($varDeclaredBankruptcyYear) . ", " .
 							PrepSQL($varRepossession) . ", " .
-							PrepSQL($varRepossessionYear) . ")";
-			mysql_query($sql);
-     		header("Location: thankyou.html");
+							PrepSQL($varRepossessionYear) . ", " .
+							PrepSQL($varPreviousHomeAddress) . ", " .
+							PrepSQL($varPreviousHomeCity) . ", " .
+						    PrepSQL($varPreviousHomeState) . ", " .
+							PrepSQL($varEmail2) . ", " .
+							PrepSQL($varMortgagePayment) . ", " .
+							PrepSQL($varBirthCity) . ", " .
+					        PrepSQL($varPassword) . ")";
+			$result = mysql_query($sql);
+			//if($result)
+			//{
+			//echo "Success";
+
+			//}
+			//else
+			//{
+			//echo "Error";
+
+			//}
+			header("Location: thankyou.html");
 			exit();
 		}
 	}
@@ -236,8 +267,17 @@
 
                     </tr>
                     <tr>
-                    <td  width="100"><label for="email">Email</label></td>
-                      <td><input type="text" name="email" maxlength="30" value="<?=$varEmail;?>"/></td>
+                    <td  width="100"><label for="email">Email</label>
+                     <br><br>
+                     <label for="email2">Email 2</label>
+                     
+                     </td>
+                      <td><input type="text" name="email" maxlength="30" value="<?=$varEmail;?>"/>
+                      <br><br>
+                      <input type="text" name="email2" maxlength="30" value="<?=$varEmail2;?>"/>
+                      </td>
+                      
+                     
                       <td  width="100"><label for="cellPhone">Cell Phone</label></td>
                       <td><input type="text" name="cellPhone" maxlength="10" value="<?=$varCellPhone;?>"/></td>
                       <td  width="100"><label for="workPhone">Work Phone</label></td>
@@ -323,6 +363,76 @@
                         </select>
                         </td>
                      </tr>
+                     
+                     <!--Previous Address beginning-->
+                     
+                     <tr>
+                    	<td><label>Previous Home Address:</label></td>
+                        <td><input type="text" name="previousHomeAddress" value="<?=$varPreviousHomeAddress;?>"/></td>
+                        <td><label>Previous City</label></td>
+                        <td align="left"><input type="text" name="previousHomeCity" value="<?=$varPreviousHomeCity;?>"/></td>
+                        <td><label>Previous Home State</label></td>
+                        <td>
+                        <select name="previousHomeState">
+                            <option value=""></option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        </td>
+                     </tr>
+
+                     <!--Previous Address ending-->
+                     
+                     
                      <tr>
                     	<td><label>Time at Residence:</label></td>
                         <td colspan="5"><input type="text" name="yearsAtResidence" value="<?=$varYearsAtResidence;?>"/>
@@ -400,6 +510,17 @@
                         <input type="text" name="foreclosureYear" maxlength="4" value="<?=$varForeclosureYear;?>"/>
                         </td>
                       </tr>
+                      
+                      <tr>
+                    	<td  width="100"><label for="mortgagePayment">Mortgage Payment</label></td>
+                        <td><input type="text" name="mortgagePayment" maxlength="50" value="<?=$varMortgagePayment;?>"/></td>
+                        <td  width="100"><label for="birthCity">Birth City</label></td>
+                        <td><input type="text" name="birthCity" maxlength="50" value="<?=$varBirthCity;?>"/></td>
+                        <td width="100"><label for="password">Password</label></td>
+                        <td><input type="text" name="password" maxlength="50" value="<?=$varPassword;?>"/></td>
+
+                    </tr>
+                      
                       <tr>
                     	<td colspan="3"><input type="submit" name="formSubmit" value="Submit" /></td>
                         <td colspan="3"><input type="cancel" value="Cancel"></td>
