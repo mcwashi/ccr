@@ -59,7 +59,7 @@
 		$varSpouseMiddleName = $_POST['spouseMiddleName'];
 	    $varSpouseMaidenName = $_POST['spouseMaidenName'];
 		$varSpouseAliasName = $_POST['spouseAliasName'];
-		$varSpouseBirthDate = $_POST['spouseBirthDate '];
+		$varSpouseBirthDate = $_POST['spouseBirthDate'];
 		$varSpouseSsn1 = $_POST['spouseSsn1'];
 		$varSpouseSsn2 = $_POST['spouseSsn2'];
 		$varSpouseSsn3 = $_POST['spouseSsn3'];
@@ -67,13 +67,13 @@
 		$varDeclaredBankruptcyYear = $_POST['declaredBankruptcyYear'];
 		$varRepossession = $_POST['repossession'];
 		$varRepossessionYear = $_POST['repossessionYear'];
-		//$varPreviousHomeAddress = $_POST['previousHomeAddress'];
-		//$varPreviousHomeCity = $_POST['previousHomeCity'];
-		//$varPreviousHomeState = $_POST['previousHomeState'];
-		//$varEmail2 = $_POST['email2'];
-		//$varMortgagePayment = $_POST['mortgagePayment'];
-		//$varBirthCity = $_POST['birthCity'];
-		//$varPassword = $_POST['password'];
+		$varPreviousHomeAddress = $_POST['previousHomeAddress'];
+		$varPreviousHomeCity = $_POST['previousHomeCity'];
+		$varPreviousHomeState = $_POST['previousHomeState'];
+		$varEmail2 = $_POST['email2'];
+		$varMortgagePayment = $_POST['mortgagePayment'];
+		$varBirthCity = $_POST['birthCity'];
+		$varPassword = $_POST['password'];
 		//$servername = "";
 		//$username = "";
 		//$password = "";
@@ -83,6 +83,7 @@
 			//$db = mysql_connect("localhost","root","sucram#4963");
 			//if(!$db) die("Error connecting to MySQL database.");
 			//mysql_select_db("CICR" ,$db);
+			//echo $varSpouseBirthDate;
 			mysql_select_db(DB_NAME, $db);
 			$sql = "INSERT INTO Persons (
 			
@@ -179,6 +180,8 @@
 			//echo "Error";
 
 			//}
+			
+			//echo $varSpouseBirthDate;
 			header("Location: thankyou.html");
 			exit();
 		}
@@ -472,7 +475,11 @@
                         <td><label> Alias or other name used:</label></td>
                         <td><input type="text" name="spouseAliasName" value="<?=$varSpouseAliasName;?>"/></td>
                         <td><label>Date of Birth:</label></td>
-                        <td><input type="text" name="spouseBirthDate" value="<?=$varSpouseBirthDate;?>"/> (YYYY-MM-DD)</td>
+                        
+                        
+                        <td>
+                        
+                        <input type="text" name="spouseBirthDate" value="<?=$varSpouseBirthDate;?>"/> (YYYY-MM-DD)</td>
                     </tr>
                     <tr>
                     	<td><label>Spouse SSN:</label></td>

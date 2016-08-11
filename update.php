@@ -95,8 +95,15 @@
 	$varRepossessionYear = '';
 	$varForeclosure = '';
 	$varForeclosureYear = '';
-	
-	
+    $varForeclosureYear = '';
+    $varPreviousHomeAddress = '';
+    $varPreviousHomeCity = '';
+    $varPreviousHomeState = '';
+	$varEmail2 = '';
+	$varMortgagePayment = '';
+    $varBirthCity = '';
+	$varPassword = '';
+			
 	//if (isset($_POST['submit']))
 	if($_POST['formSubmit'] == "Submit")
 	{
@@ -110,8 +117,8 @@
 		    $varCellPhone = $_POST['cellPhone'];
 		    $varWorkPhone = $_POST['workPhone'];
 			$varSsn1 = $_POST['ssn1'];
-			$varSsn1 = $_POST['ssn2'];
-			$varSsn1 = $_POST['ssn3'];
+			$varSsn2 = $_POST['ssn2'];
+			$varSsn3 = $_POST['ssn3'];
 			$varHomeAddress = $_POST['homeAddress'];
 			$varHomeCity = $_POST['homeCity'];
 			$varHomeState = $_POST['homeState'];
@@ -135,6 +142,16 @@
 			$varRepossessionYear = $_POST['repossessionYear'];
 			$varForeclosure = $_POST['foreclosure'];
 			$varForeclosureYear = $_POST['foreclosureYear'];
+		    $varPreviousHomeAddress = $_POST['previousHomeAddress'];
+            $varPreviousHomeCity = $_POST['previousHomeCity'];
+            $varPreviousHomeState = $_POST['previousHomeState'];
+	        $varEmail2 = $_POST['email2'];
+	        $varMortgagePayment = $_POST['mortgagePayment'];
+            $varBirthCity = $_POST['birthCity'];
+			$varPassword = $_POST['password'];
+		
+		
+		
 
 			
 			$db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
@@ -173,7 +190,15 @@
 			Repossession = '%s',
 			RepossessionYear = '%s',
 			Foreclosure = '%s',
-			ForeclosureYear = '%s'
+			ForeclosureYear = '%s',
+			PreviousHomeAddress = '%s',
+			PreviousHomeCity = '%s',
+			PreviousHomeState= '%s',
+			Email2 = '%s',
+			MortgagePayment= '%s',
+			BirthCity= '%s',
+			Password= '%s'
+			
 			WHERE PersonId='%s'", 
 			mysqli_real_escape_string($db, $varFirstName),
 			mysqli_real_escape_string($db, $varLastName),
@@ -210,6 +235,13 @@
 			mysqli_real_escape_string($db, $varRepossessionYear),
 			mysqli_real_escape_string($db, $varForeclosure),
 			mysqli_real_escape_string($db, $varForeclosureYear),
+			mysqli_real_escape_string($db, $varPreviousHomeAddress),
+		    mysqli_real_escape_string($db, $varPreviousHomeCity),
+		    mysqli_real_escape_string($db, $varPreviousHomeState),
+			mysqli_real_escape_string($db, $varEmail2),
+			mysqli_real_escape_string($db, $varMortgagePayment),
+		    mysqli_real_escape_string($db, $varBirthCity),
+			mysqli_real_escape_string($db, $varPassword),
 			$id
 			);
 			//echo $varMiddleName;
@@ -263,8 +295,17 @@
 				$varRepossessionYear = $row['RepossessionYear'];
 				$varForeclosure = $row['Foreclosure'];
 				$varForeclosureYear = $row['ForeclosureYear'];
+				$varPreviousHomeAddress = $row['PreviousHomeAddress'];
+				$varPreviousHomeCity = $row['PreviousHomeCity'];
+				$varPreviousHomeState = $row['PreviousHomeState'];
+				$varEmail2 = $row['Email2'];
+				$varMortgagePayment = $row['MortgagePayment'];
+				$varBirthCity = $row['BirthCity'];
+				$varPassword = $row['Password'];
+
 			}
 			mysqli_close($db);
+			//echo "you are here";
 		}
  ?>
  
@@ -286,10 +327,19 @@
 
                     </tr>
                     <tr>
-                    	<td  width="100"><label for="email">Email</label></td>
+                    	<td  width="100"><label for="email">Email</label>
+                       <br><br>
+                     <label for="email2">Email 2</label>
+                        </td>
                         <td><input type="text" name="email" maxlength="30" value="<?php 
 						echo htmlspecialchars($varEmail);
-						?>"/></td>
+						?>"/>
+                       <br><br>
+                      <input type="text" name="email2" maxlength="30" 
+                      value="<?php 
+						echo htmlspecialchars($varEmail2);
+						?>"/>
+                       </td>
                         <td  width="100"><label for="cellPhone">Cell Phone</label></td>
                         <td><input type="text" name="cellPhone" maxlength="10" value="<?php 
 						echo htmlspecialchars($varCellPhone);
@@ -396,6 +446,88 @@
                         </select>
                         </td>
                      </tr>
+                     
+                     
+                     <!--Previous Home address beginning -->
+                      <tr>
+                    	<td><label>Previous Home Address:</label></td>
+                        <td><input type="text" name="previousHomeAddress" value="<?php 
+						echo htmlspecialchars($varPreviousHomeAddress);
+						?>"/></td>
+                        <td><label>Previous Home City</label></td>
+                        <td align="left"><input type="text" name="previousHomeCity" value="<?php 
+						echo htmlspecialchars($varPreviousHomeCity);
+						?>"/></td>
+                        <td><label>Previous State</label></td>
+                        <td>
+                       <select name="previousHomeState">
+                       		<option <?php if ($varPreviousHomeState == "" ) echo 'selected' ; ?> value=""></option>
+                            
+                            <option <?php if ($varPreviousHomeState == "AL" ) echo 'selected' ; ?> value="AL">Alabama</option>
+                            <option <?php if ($varPreviousHomeState == "AK" ) echo 'selected' ; ?> value="AK">Alaska</option>
+                            <option <?php if ($varPreviousHomeState == "AZ" ) echo 'selected' ; ?> value="AZ">Arizona</option>
+                            <option <?php if ($varPreviousHomeState == "AR" ) echo 'selected' ; ?> value="AR">Arkansas</option>
+                            <option <?php if ($varPreviousHomeState == "CA" ) echo 'selected' ; ?> value="CA">California</option>
+                            <option <?php if ($varPreviousHomeState == "IL" ) echo 'selected' ; ?> value="IL">Colorado</option>
+                            <option <?php if ($varPreviousHomeState == "CT" ) echo 'selected' ; ?> value="CT">Connecticut</option>
+                            <option <?php if ($varPreviousHomeState == "DE" ) echo 'selected' ; ?> value="DE">Delaware</option>
+                            <option <?php if ($varPreviousHomeState == "DC" ) echo 'selected' ; ?> value="DC">District Of Columbia</option>
+                            <option <?php if ($varPreviousHomeState == "FL" ) echo 'selected' ; ?> value="FL">Florida</option>
+                            <option <?php if ($varPreviousHomeState == "GA" ) echo 'selected' ; ?> value="GA">Georgia</option>
+                            <option <?php if ($varPreviousHomeState == "HI" ) echo 'selected' ; ?> value="HI">Hawaii</option>
+                            <option <?php if ($varPreviousHomeState == "ID" ) echo 'selected' ; ?> value="ID">Idaho</option>
+                            <option <?php if ($varPreviousHomeState == "IL" ) echo 'selected' ; ?> value="IL">Illinois</option>
+                            
+                            
+                            <option <?php if ($varPreviousHomeState == "IN" ) echo 'selected' ; ?> value="IN">Indiana</option>
+                            <option <?php if ($varPreviousHomeState == "IA" ) echo 'selected' ; ?> value="IA">Iowa</option>
+                            <option <?php if ($varPreviousHomeState == "KS" ) echo 'selected' ; ?> value="KS">Kansas</option>
+                            <option <?php if ($varPreviousHomeState == "KY" ) echo 'selected' ; ?> value="KY">Kentucky</option>
+                            <option <?php if ($varPreviousHomeState == "LA" ) echo 'selected' ; ?> value="LA">Louisiana</option>
+                            <option <?php if ($varPreviousHomeState == "ME" ) echo 'selected' ; ?> value="ME">Maine</option>
+                            <option <?php if ($varPreviousHomeState == "MD" ) echo 'selected' ; ?> value="MD">Maryland</option>
+                            <option <?php if ($varPreviousHomeState == "MA" ) echo 'selected' ; ?> value="MA">Massachusetts</option>
+                            <option <?php if ($varPreviousHomeState == "MI" ) echo 'selected' ; ?> value="MI">Michigan</option>
+                            <option <?php if ($varPreviousHomeState == "MN" ) echo 'selected' ; ?> value="MN">Minnesota</option>
+                            <option <?php if ($varPreviousHomeState == "MS" ) echo 'selected' ; ?> value="MS">Mississippi</option>
+                            <option <?php if ($varPreviousHomeState == "MO" ) echo 'selected' ; ?> value="MO">Missouri</option>
+                            <option <?php if ($varPreviousHomeState == "MT" ) echo 'selected' ; ?> value="MT">Montana</option>
+                            <option <?php if ($varPreviousHomeState == "NE" ) echo 'selected' ; ?> value="NE">Nebraska</option>
+                            <option <?php if ($varPreviousHomeState == "NV" ) echo 'selected' ; ?> value="NV">Nevada</option>
+                            <option <?php if ($varPreviousHomeState == "NH" ) echo 'selected' ; ?> value="NH">New Hampshire</option>
+                            <option <?php if ($varPreviousHomeState == "NJ" ) echo 'selected' ; ?> value="NJ">New Jersey</option>
+                            <option <?php if ($varPreviousHomeState == "NM" ) echo 'selected' ; ?> value="NM">New Mexico</option>
+                            <option <?php if ($varPreviousHomeState == "NY" ) echo 'selected' ; ?> value="NY">New York</option>
+                            <option <?php if ($varPreviousHomeState == "NC" ) echo 'selected' ; ?> value="NC">North Carolina</option>
+                            <option <?php if ($varPreviousHomeState == "ND" ) echo 'selected' ; ?> value="ND">North Dakota</option>
+                            <option <?php if ($varPreviousHomeState == "OH" ) echo 'selected' ; ?> value="OH">Ohio</option>
+                            <option <?php if ($varPreviousHomeState == "OK" ) echo 'selected' ; ?> value="OK">Oklahoma</option>
+                            <option <?php if ($varPreviousHomeState == "OR" ) echo 'selected' ; ?> value="OR">Oregon</option>
+                            <option <?php if ($varPreviousHomeState == "PA" ) echo 'selected' ; ?> value="PA">Pennsylvania</option>
+                            <option <?php if ($varPreviousHomeState == "RI" ) echo 'selected' ; ?> value="RI">Rhode Island</option>
+                            <option <?php if ($varPreviousHomeState == "SC" ) echo 'selected' ; ?> value="SC">South Carolina</option>
+                            <option <?php if ($varPreviousHomeState == "SD" ) echo 'selected' ; ?> value="SD">South Dakota</option>
+                            <option <?php if ($varPreviousHomeState == "TN" ) echo 'selected' ; ?> value="TN">Tennessee</option>
+                            <option <?php if ($varPreviousHomeState == "TX" ) echo 'selected' ; ?> value="TX">Texas</option>
+                            <option <?php if ($varPreviousHomeState == "UT" ) echo 'selected' ; ?> value="UT">Utah</option>
+                            <option <?php if ($varPreviousHomeState == "VT" ) echo 'selected' ; ?> value="VT">Vermont</option>
+                            <option <?php if ($varPreviousHomeState == "VA" ) echo 'selected' ; ?> value="VA">Virginia</option>
+                            <option <?php if ($varPreviousHomeState == "WA" ) echo 'selected' ; ?> value="WA">Washington</option>
+                            <option <?php if ($varPreviousHomeState == "WV" ) echo 'selected' ; ?> value="WV">West Virginia</option>
+                            <option <?php if ($varPreviousHomeState == "WI" ) echo 'selected' ; ?> value="WI">Wisconsin</option>
+                            <option <?php if ($varPreviousHomeState == "WY" ) echo 'selected' ; ?> value="WY">Wyoming</option>
+                        </select>
+                        </td>
+                     </tr>
+                     
+                     
+                     
+                     
+                     
+                     <!--Previous Home address ending -->
+                     
+                     
+                     
                      <tr>
                     	<td><label>Time at Residence:</label></td>
                         <td colspan="5">
@@ -588,6 +720,38 @@
                         
                         </td>
                       </tr>
+                      
+                       <tr>
+                    	<td  width="100"><label for="mortgagePayment">Mortgage Payment</label></td>
+                        <td>
+                        
+                         <input type="text" name="mortgagePayment" maxlength="50" value="<?php 
+						echo htmlspecialchars($varMortgagePayment);
+						?>"/>
+                        
+                        
+                        </td>
+                        <td  width="100"><label for="birthCity">Birth City</label></td>
+                        <td>
+                        
+                         <input type="text" name="birthCity" maxlength="50" value="<?php 
+						echo htmlspecialchars($varBirthCity);
+						?>"/>
+                        
+                        </td>
+                        <td width="100"><label for="password">Password</label></td>
+                        <td>
+                        
+                         <input type="text" name="password" maxlength="50" value="<?php 
+						echo htmlspecialchars($varPassword);
+						?>"/>
+                        
+                       </td>
+
+                    </tr>
+                      
+                      
+                      
                       <tr>
                     	<td colspan="3"><input type="submit" name="formSubmit" value="Submit" /></td>
                         <td colspan="3"><input type="cancel" value="Cancel"></td>
